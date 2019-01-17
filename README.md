@@ -8,7 +8,7 @@
  - [ ] Fetch and Display 24h product data from coinbase.com
      - [ ] GET /products to get a list of coinbase pairs
      - [ ] GET /{id}/stats to get the 24 hours stats of a specific product
- - [ ] Illustrate Testing Strategies
+ - [X] Illustrate Testing Strategies
      - [ ] Assumption: T/BDD
      - [ ] Acceptance tests as E2E
      - [ ] Basic unit/component tests

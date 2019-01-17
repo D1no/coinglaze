@@ -3,7 +3,7 @@
 ### _Task_
 
  - [ ] Create a single page application
- - [ ] Using the React Framework
+ - [X] Using the React Framework
  - [ ] Should be responsive
  - [ ] Fetch and Display 24h product data from coinbase.com
      - [ ] GET /products to get a list of coinbase pairs

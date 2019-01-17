@@ -16,7 +16,7 @@
 
 ### _User Storys_
  - [ ] **Epic**: As a user, I want to be able to open coinglaze in a web browser.
-    - [ ] As a user, I can open the website in a modern web browser.
+    - [X] As a user, I can open the website in a modern web browser.
     - [ ] As a user, visiting the website with a modern web browser in HD (1080p) resultion displays the website correctly.
     - [ ] As a user, visiting the website on a modern smartphone (340p) displays the website correctly.
   - [ ] **Epic**: As a user, I want to be able to see a list of crypto currencies with their 24h stats in my base currency

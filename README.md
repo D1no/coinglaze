@@ -9,7 +9,7 @@
      - [ ] GET /products to get a list of coinbase pairs
      - [ ] GET /{id}/stats to get the 24 hours stats of a specific product
  - [X] Illustrate Testing Strategies
-     - [ ] Assumption: T/BDD
+     - [X] Assumption: T/BDD
      - [ ] Acceptance tests as E2E
      - [ ] Basic unit/component tests
   - [ ] Should be responsive (mobile / web)

@@ -1,5 +1,10 @@
 # Coinglaze - Code Challange
 
+### How to run
+ - `yarn install`
+ - `yarn start` then,for BDD testing
+ - `yarn cypress:open`
+
 ### _Task_
 
  - [X] Create a single page application

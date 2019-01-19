@@ -1044,7 +1044,7 @@
   resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.2.tgz#e13182e1b69871a422d7863e11a4a6f5b814a4bd"
   integrity sha512-42zEJkBpNfMEAvWR5WlwtTH22oDzcMjFsL9gDGExwF8X8WvAiw7Vwop7hPw03QT8TKfec83LwbHj6SvpqM4ELQ==
 
-"@types/zen-observable@^0.8.0":
+"@types/zen-observable@0.8.0", "@types/zen-observable@^0.8.0":
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.0.tgz#8b63ab7f1aa5321248aad5ac890a485656dcea4d"
   integrity sha512-te5lMAWii1uEJ4FwLjzdlbw3+n0FZNOvFXHxQDKeT0dilh7HOzdMzV2TrJVUzq8ep7J4Na8OUYPRLSQkJHAlrg==
@@ -1396,6 +1396,14 @@ apollo-link-rest@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/apollo-link-rest/-/apollo-link-rest-0.7.0.tgz#1742dfe435870dfdbbf9325bed77d83a89c5f1e6"
   integrity sha512-GhFizBpEBed/6lVKYcROweXhtQobcsg2UMorzHHZtwhSxqVKq2db2PcddbnFwEEk5MmTyY1tm7t5kDh6cB3LwA==
+
+apollo-link-retry@^2.2.8:
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/apollo-link-retry/-/apollo-link-retry-2.2.8.tgz#84be877118687285a346cad60af6a9e707afbf2f"
+  integrity sha512-bwGAjhYwuQuim6QhQYZ4LeHA+1bXmdGmd6s1LpTziR46sZIuPEEuaxTwvyZqrjbj8CkMCx5shcZeheQ8D/ZTmA==
+  dependencies:
+    "@types/zen-observable" "0.8.0"
+    apollo-link "^1.2.6"
 
 apollo-link@^1.0.0, apollo-link@^1.2.6:
   version "1.2.6"

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
+import { Client } from "../index";
 
 /**
  * Standard query build up with expected 429
@@ -11,19 +12,70 @@ const Products = gql`
       id @export(as: "id")
       base_currency
       quote_currency
+      base_min_size
+      base_max_size
+      quote_increment
       display_name
+      status
+      margin_enabled # : Boolean
+      status_message
+      min_market_funds
+      max_market_funds
+      post_only # : Boolean
+      limit_only # : Boolean
+      cancel_only # : Boolean
+      # stats @rest(type: "[Stats]", path: "/products/{exportVariables.id}/stats", endpoint: "coinbase") {
+      #   open
+      #   high
+      #   low
+      #   volume
+      #   last
+      #   volume_30day
+      # }
     }
   }
 `;
 
 /**
- * WIP
+ * WIP. To be extracted
  */
 const Stats = gql`
   query stats($currencyPair: String!) {
-    stats(search: $currencyPair)
-  }
+      stats(currencyPair: $currencyPair) @rest(type: "[Stats]", path: "/products/:currencyPair/stats", endpoint: "coinbase") {
+        open
+        high
+        low
+        volume
+        last
+        volume_30day
+      }
+    }
 `;
+
+Client.query(  { 
+  query: Products
+}).then(response => {
+  console.log(response.data.products);
+});
+
+const testStats = (currencyPair = "BTC-USD") => Client.query(  { 
+    query: Stats,
+    variables: {
+      currencyPair
+    }
+  }).then(response => {
+    const returnValue = `${currencyPair} last: ${response.data.stats.last}`;
+  console.log(returnValue);
+  return returnValue
+});
+
+// Testing state
+testStats()
+
+/**
+ * Mocking Component
+ * ToDo: Factor out
+ */
 
 class CoinbaseProducts extends Component {
 
@@ -43,9 +95,10 @@ class CoinbaseProducts extends Component {
 
     return (
       <div>
-        {products.map(({ id, base_currency, quote_currency, display_name}) => 
-          <div>
-            (id: {id}) {display_name}, {base_currency}, {quote_currency}
+        <h4>Product Pairs</h4>
+        {products.map(({ id, base_currency, quote_currency, display_name, margin_enabled}) => 
+          <div key={id}>
+            (id: {id}) {display_name}, {base_currency}, {quote_currency}, {margin_enabled ? "Yes!" : "No!"}
           </div>
         )}
       </div>

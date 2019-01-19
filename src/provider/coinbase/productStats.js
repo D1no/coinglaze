@@ -12,13 +12,6 @@ const Products = gql`
       base_currency
       quote_currency
       display_name
-      stats @rest(type: "Stats", path: "products/{exportVariables.id}/stats", endpoint: "coinbase") {
-        open
-        high
-        low
-        volume
-        last
-      }
     }
   }
 `;

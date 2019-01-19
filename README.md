@@ -30,3 +30,34 @@
     - [ ] As a user, I can select a crypto currency.
     - [ ] As a user, I see the 24h stats of the crypto currency in my base currency, when selected.
 
+# _Solution_
+
+##### Situation
+ - The task involves a typical n+1 query problem. First the product list, then the product stats need to be fetched; leading to request overhead of n(n-1) with potential for optimisation for base-target currency pairs.
+ - The display of results should be responsive
+
+##### Analysis (Complication)
+- To mitigate the issue of concurrent requests, batching (resolving all possibilities in "one" fetch) is a typical solution to reduce overhead. The other is a tired / just in time fetching approach with a caching solution derived from expected user behaviour. 
+- From a user perspective, it is unlikely that I will have interest in the relationship of all n*n relationships of currency pairs, since a user is with highest probability focused one or two pairs. I.e. EUR and USD.
+- Therefore, I will chose a tired solution in which the users base currency is the first layer (or a default, such as EUR) and the pair resolution a product of that.
+- Also, regarding responsiveness, flexbox or css grids are not available in older browsers. Therefore...
+
+##### Architecture (Solution)
+- ... I make the assumption of targeting evergreen browsers, which is in general the proper approach for start-ups and go to market strategies.
+- As per task, I will use create-react-app for instantiating a new project
+- I will use cypress.io test runner to formulate (TDD)
+  - acceptance/integration tests
+  - select user currency of available coinbase base currency
+  - show list list of pairs with
+  - all info available from /stats
+  - unit tests
+  - component display etc.
+- As an architect, I want to have a proper caching solution and will therefore rely on apollo-link-rest to perform incremental cacheing and joining of the data to minimize bandwidth; while profiting of extensive unit tests.
+- I will go for a flexbox based design via a tree-shakable UI library and will be using styled-system for granular responsive controls
+
+##### Limitations
+- This architecture assumes
+  - No infinite product or stats list (aka, no pagination)
+  - No server side render (no re-hydration)
+  - No progressive web-features (no service workers)
+- Production implementations would use an apollo/prisma/ralay or similar server to join multiple endpoints and proxy only absolutely necessary data for web and mobile clients. Also avoiding unnecessary load on coinbase

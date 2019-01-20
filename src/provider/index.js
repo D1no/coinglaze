@@ -9,6 +9,7 @@ import { ApolloLink } from "apollo-link";
 import { RestLink } from "apollo-link-rest";
 import { RetryLink } from "apollo-link-retry";
 import { ApolloProvider } from "react-apollo";
+import PQueue from "p-queue";
 import coinbaseConfig from "./coinbase/coinbaseConfig";
 
 const { baseUrl } = coinbaseConfig;
@@ -31,11 +32,21 @@ const retryRest = new RetryLink({
 
 /**
  * Note: We could define multiple endpoints.
+ * We are using PQueue to enforce a min time safety gap between successive rest calls.
+ * This feature block relates to a new issue regarding default queue handling:
+ * https://github.com/apollographql/apollo-link-rest/issues/184
  */
+
+const requestQueue = new PQueue({
+  concurrency: 1,
+  interval: 500 // Min. 0.5 seconds between rest calls
+})
+
 const restProviders = new RestLink({
   endpoints: {
     coinbase: baseUrl
-  }
+  },
+  customFetch: (...args) => requestQueue.add(() => fetch(...args))
 })
 
 /**

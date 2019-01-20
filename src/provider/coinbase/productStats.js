@@ -24,14 +24,14 @@ const Products = gql`
       post_only # : Boolean
       limit_only # : Boolean
       cancel_only # : Boolean
-      # stats @rest(type: "[Stats]", path: "/products/{exportVariables.id}/stats", endpoint: "coinbase") {
-      #   open
-      #   high
-      #   low
-      #   volume
-      #   last
-      #   volume_30day
-      # }
+      stats @rest(type: "[Stats]", path: "/products/{exportVariables.id}/stats", endpoint: "coinbase") {
+        open
+        high
+        low
+        volume
+        last
+        volume_30day
+      }
     }
   }
 `;
@@ -96,9 +96,9 @@ class CoinbaseProducts extends Component {
     return (
       <div>
         <h4>Product Pairs</h4>
-        {products.map(({ id, base_currency, quote_currency, display_name, margin_enabled}) => 
+        {products.map(({ id, base_currency, quote_currency, display_name, margin_enabled, stats}) => 
           <div key={id}>
-            (id: {id}) {display_name}, {base_currency}, {quote_currency}, {margin_enabled ? "Yes!" : "No!"}
+            (id: {id}) {display_name}, {base_currency}, {quote_currency}, {margin_enabled ? "Yes!" : "No!"}, last: {stats.last}, open: {stats.open}, high: {stats.high}, low: {stats.low} 
           </div>
         )}
       </div>

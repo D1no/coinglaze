@@ -4,7 +4,8 @@ import gql from "graphql-tag";
 import { Client } from "../index";
 
 /**
- * Standard query build up with expected 429
+ * Standard (slow) query, mitigated by provider against rate limiting
+ * (Queueing requests on fetch layer)
  */
 const Products = gql`
   query products {
@@ -35,42 +36,6 @@ const Products = gql`
     }
   }
 `;
-
-/**
- * WIP. To be extracted
- */
-const Stats = gql`
-  query stats($currencyPair: String!) {
-      stats(currencyPair: $currencyPair) @rest(type: "[Stats]", path: "/products/:currencyPair/stats", endpoint: "coinbase") {
-        open
-        high
-        low
-        volume
-        last
-        volume_30day
-      }
-    }
-`;
-
-Client.query(  { 
-  query: Products
-}).then(response => {
-  console.log(response.data.products);
-});
-
-const testStats = (currencyPair = "BTC-USD") => Client.query(  { 
-    query: Stats,
-    variables: {
-      currencyPair
-    }
-  }).then(response => {
-    const returnValue = `${currencyPair} last: ${response.data.stats.last}`;
-  console.log(returnValue);
-  return returnValue
-});
-
-// Testing state
-testStats()
 
 /**
  * Mocking Component

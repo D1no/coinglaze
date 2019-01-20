@@ -9,10 +9,9 @@
 
  - [X] Create a single page application
  - [X] Using the React Framework
- - [ ] Should be responsive
- - [ ] Fetch and Display 24h product data from coinbase.com
-     - [ ] GET /products to get a list of coinbase pairs
-     - [ ] GET /{id}/stats to get the 24 hours stats of a specific product
+ - [X] Fetch and Display 24h product data from coinbase.com
+     - [X] GET /products to get a list of coinbase pairs
+     - [X] GET /{id}/stats to get the 24 hours stats of a specific product
  - [X] Illustrate Testing Strategies
      - [X] Assumption: T/BDD
      - [ ] Acceptance tests as E2E

@@ -9,7 +9,7 @@ import { ApolloLink } from "apollo-link";
 import { RestLink } from "apollo-link-rest";
 import { RetryLink } from "apollo-link-retry";
 import { ApolloProvider } from "react-apollo";
-import PQueue from "p-queue";
+import pThrottle from "p-throttle";
 import coinbaseConfig from "./coinbase/coinbaseConfig";
 
 const { baseUrl } = coinbaseConfig;
@@ -37,16 +37,14 @@ const retryRest = new RetryLink({
  * https://github.com/apollographql/apollo-link-rest/issues/184
  */
 
-const requestQueue = new PQueue({
-  concurrency: 1,
-  interval: 500 // Min. 0.5 seconds between rest calls
-})
-
 const restProviders = new RestLink({
   endpoints: {
     coinbase: baseUrl
   },
-  customFetch: (...args) => requestQueue.add(() => fetch(...args))
+  // Throttle fetches to max 1 concurrent request and min. delay of 0.5 seconds.
+  customFetch: pThrottle( (...args) => {
+    return fetch(...args);
+  }, 1, 500)
 })
 
 /**

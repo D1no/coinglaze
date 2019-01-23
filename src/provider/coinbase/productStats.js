@@ -25,7 +25,12 @@ const Products = gql`
       post_only # : Boolean
       limit_only # : Boolean
       cancel_only # : Boolean
-      stats @rest(type: "[Stats]", path: "/products/{exportVariables.id}/stats", endpoint: "coinbase") {
+      stats
+        @rest(
+          type: "[Stats]"
+          path: "/products/{exportVariables.id}/stats"
+          endpoint: "coinbase"
+        ) {
         open
         high
         low
@@ -43,7 +48,6 @@ const Products = gql`
  */
 
 class CoinbaseProducts extends Component {
-
   // ToDo: Refactor out component
   render() {
     const { loading, error, products } = this.props;
@@ -52,19 +56,30 @@ class CoinbaseProducts extends Component {
       return <h4>Loading...</h4>;
     }
     if (error) {
-      return <h4>{error.message}</h4>
+      return <h4>{error.message}</h4>;
     }
-    if(!products) {
+    if (!products) {
       return <h4>No Result!</h4>;
     }
 
     return (
       <div>
         <h4>Product Pairs</h4>
-        {products.map(({ id, base_currency, quote_currency, display_name, margin_enabled, stats}) => 
-          <div key={id}>
-            (id: {id}) {display_name}, {base_currency}, {quote_currency}, {margin_enabled ? "Yes!" : "No!"}, last: {stats.last}, open: {stats.open}, high: {stats.high}, low: {stats.low} 
-          </div>
+        {products.map(
+          ({
+            id,
+            base_currency,
+            quote_currency,
+            display_name,
+            margin_enabled,
+            stats,
+          }) => (
+            <div key={id}>
+              (id: {id}) {display_name}, {base_currency}, {quote_currency},{" "}
+              {margin_enabled ? "Yes!" : "No!"}, last: {stats.last}, open:{" "}
+              {stats.open}, high: {stats.high}, low: {stats.low}
+            </div>
+          )
         )}
       </div>
     );
@@ -73,24 +88,23 @@ class CoinbaseProducts extends Component {
 
 const CoinbaseProductsQuery = graphql(Products, {
   props: ({ data }) => {
-    
-    if(data.loading) {
+    if (data.loading) {
       return {
-        loading: data.loading
-      }
+        loading: data.loading,
+      };
     }
 
-    if(data.error) {
+    if (data.error) {
       return {
-        error: data.error
-      }
+        error: data.error,
+      };
     }
 
     return {
       products: data.products,
-      loading: false
-    }
-  }
+      loading: false,
+    };
+  },
 })(CoinbaseProducts);
 
 export default CoinbaseProductsQuery;

@@ -22,12 +22,12 @@ const retryRest = new RetryLink({
   delay: {
     initial: 1000,
     max: Infinity,
-    jitter: true
+    jitter: true,
   },
   attempts: {
     max: 5,
-    retryIf: (error, _operation) => !!error
-  }
+    retryIf: (error, _operation) => !!error,
+  },
 });
 
 /**
@@ -39,34 +39,32 @@ const retryRest = new RetryLink({
 
 const restProviders = new RestLink({
   endpoints: {
-    coinbase: baseUrl
+    coinbase: baseUrl,
   },
   // Throttle fetches to max 1 concurrent request and min. delay of 0.5 seconds.
-  customFetch: pThrottle( (...args) => {
-    return fetch(...args);
-  }, 1, 500)
-})
+  customFetch: pThrottle(
+    (...args) => {
+      return fetch(...args);
+    },
+    1,
+    500
+  ),
+});
 
 /**
  * Composing the link of the provider by chaining them
  */
-const link = new ApolloLink.from([
-  retryRest,
-  restProviders
-])
-
+const link = new ApolloLink.from([retryRest, restProviders]);
 
 const Client = new ApolloClient({
   link: link,
-  cache: new InMemoryCache()
-})
+  cache: new InMemoryCache(),
+});
 
 export { Client };
 
-const Provider = (props) => (
-  <ApolloProvider client={Client}>
-    {props.children}
-  </ApolloProvider>
+const Provider = props => (
+  <ApolloProvider client={Client}>{props.children}</ApolloProvider>
 );
 
 export default Provider;

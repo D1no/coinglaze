@@ -22,10 +22,10 @@ const webpackOptions = {
     rules: [
       {
         test: /\.(js|jsx|mjs)$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         options: {
-          presets: ['@babel/preset-react'],
-          plugins: ['@babel/plugin-proposal-class-properties'],
+          presets: ["@babel/preset-react"],
+          plugins: ["@babel/plugin-proposal-class-properties"],
         },
       },
     ],
@@ -39,11 +39,11 @@ const webpackOptions = {
 const options = {
   webpackOptions,
   // We use cra's live reload
-  watchOptions: {}
-}
+  watchOptions: {},
+};
 
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-  on('file:preprocessor', webpack(options));
-}
+  on("file:preprocessor", webpack(options));
+};

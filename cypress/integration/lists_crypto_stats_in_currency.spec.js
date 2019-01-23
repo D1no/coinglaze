@@ -13,7 +13,6 @@ describe("Epic: Lists crypto stats in selected currency", () => {
    * duplication. However, that hurts readability / test self documentation.
    */
   describe("Selecting a base currency", () => {
-
     beforeEach(() => {
       cy.visit("/");
     });
@@ -24,18 +23,15 @@ describe("Epic: Lists crypto stats in selected currency", () => {
       });
 
       it(`Dropdown defaults to ${DEFAULT_CURRENCY}`, () => {
-
-        cy.get("[data-test=\"CurrencyDropdown\"]")
-          .should("have.value", DEFAULT_CURRENCY);
-
-      })
+        cy.get('[data-test="CurrencyDropdown"]').should(
+          "have.value",
+          DEFAULT_CURRENCY
+        );
+      });
 
       it(`Is possible to select ${PREFERRED_CURRENCY}`, () => {
-
-        cy.get('[data-test="CurrencyDropdown"]')
-          .select(PREFERRED_CURRENCY);
-
-      })
+        cy.get('[data-test="CurrencyDropdown"]').select(PREFERRED_CURRENCY);
+      });
     });
 
     describe("On Desktop", () => {
@@ -44,18 +40,12 @@ describe("Epic: Lists crypto stats in selected currency", () => {
       });
 
       it(`Sidebar defaults to ${DEFAULT_CURRENCY}`, () => {
-
-        cy.get("[data-test=\"sidebar\"]")
-          .should("have.value", DEFAULT_CURRENCY);
-
-      })
+        cy.get('[data-test="sidebar"]').should("have.value", DEFAULT_CURRENCY);
+      });
 
       it(`Is possible to select ${PREFERRED_CURRENCY}`, () => {
-
-        cy.get('[data-test="sidebar"]')
-          .select(PREFERRED_CURRENCY);
-
-      })
+        cy.get('[data-test="sidebar"]').select(PREFERRED_CURRENCY);
+      });
     });
   });
 });

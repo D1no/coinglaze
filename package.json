@@ -24,7 +24,9 @@
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
     "format": "prettier --list-different --write \"*/**/*.{ts,tsx,js,jsx,json,html,css}\"",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": [
@@ -51,9 +53,17 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.3.0",
     "@babel/preset-react": "^7.0.0",
     "@cypress/webpack-preprocessor": "^4.0.3",
+    "@storybook/addon-actions": "^4.1.11",
+    "@storybook/addon-knobs": "^4.1.11",
+    "@storybook/addon-links": "^4.1.11",
+    "@storybook/addon-viewport": "^4.1.11",
+    "@storybook/addons": "^4.1.11",
+    "@storybook/react": "^4.1.11",
+    "babel-loader": "8.0.4",
     "cypress": "^3.1.4",
     "cypress-react-unit-test": "^1.2.1",
     "eslint-config-prettier": "^4.0.0",

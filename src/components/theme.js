@@ -1,5 +1,9 @@
 import React from "react";
-import { ThemeProvider, createGlobalStyle } from "styled-components";
+/**
+ * Macro needed to support the css property without ejecting CRA.
+ * Note: Link & Details https://www.styled-components.com/docs/tooling#babel-macro
+ */
+import { ThemeProvider, createGlobalStyle } from "styled-components/macro";
 
 /**
  * Global App Styles
@@ -14,13 +18,16 @@ const GlobalStyle = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-size: cover;
+    background: linear-gradient(-180deg, #FFFFFF 0%, #F7F6F8 67%, #EAE4F7 100%) no-repeat center center fixed;
   }
 `;
 /**
  * Configuration for Design System Choices
  * Note: Overwrites styled-system defaults incl. responsive properties
  */
-const light = {
+const themeConfig = {
+  maxWidth: "1024px",
   fonts: {
     sans: "system-ui, sans-serif",
     mono: "Menlo, monospace",
@@ -33,6 +40,8 @@ const light = {
 export default props => (
   <>
     <GlobalStyle />
-    <ThemeProvider theme={light} {...props} />
+    <ThemeProvider theme={themeConfig} {...props} />
   </>
 );
+
+export { themeConfig };

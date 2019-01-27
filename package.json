@@ -39,7 +39,7 @@
   },
   "prettier": {
     "singleQuote": false,
-    "jsxBracketSameLine": true,
+    "jsxBracketSameLine": false,
     "trailingComma": "es5",
     "endOfLine": "lf"
   },

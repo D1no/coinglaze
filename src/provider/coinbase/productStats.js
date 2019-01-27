@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
-import { Client } from "../index";
 
 /**
  * Standard (slow) query, mitigated by provider against rate limiting

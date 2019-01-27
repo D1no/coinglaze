@@ -1,9 +1,10 @@
 import React from "react";
+import { Heading } from "rebass";
 
 const Header = ({ title = "Welcome to Coinglaze!" }) => {
   return (
     <div>
-      <h1 data-test="title">{title}</h1>
+      <Heading data-test="title">{title}</Heading>
     </div>
   );
 };

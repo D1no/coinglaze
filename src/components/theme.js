@@ -9,7 +9,7 @@ import { ThemeProvider, createGlobalStyle } from "styled-components/macro";
  * Global App Styles
  * Note: Place for index.css content / replacement
  */
-const GlobalStyle = createGlobalStyle`
+const GlobalResetStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
@@ -18,15 +18,22 @@ const GlobalStyle = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+`;
+
+// Place for Page Styling
+const GlobalPageStyle = createGlobalStyle`
+  body {
     background-size: cover;
     background: linear-gradient(-180deg, #FFFFFF 0%, #F7F6F8 67%, #EAE4F7 100%) no-repeat center center fixed;
   }
 `;
+
 /**
  * Configuration for Design System Choices
  * Note: Overwrites styled-system defaults incl. responsive properties
  */
-const themeConfig = {
+const lightTheme = {
   maxWidth: "1024px",
   fonts: {
     sans: "system-ui, sans-serif",
@@ -39,9 +46,10 @@ const themeConfig = {
  */
 export default props => (
   <>
-    <GlobalStyle />
-    <ThemeProvider theme={themeConfig} {...props} />
+    <GlobalResetStyle />
+    <GlobalPageStyle />
+    <ThemeProvider theme={lightTheme} {...props} />
   </>
 );
 
-export { themeConfig };
+export { lightTheme, GlobalResetStyle, GlobalPageStyle };

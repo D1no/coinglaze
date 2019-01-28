@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "rebass";
 import "styled-components/macro";
-import { themeConfig } from "./theme";
+import { lightTheme } from "./theme";
 
 const LayoutListRegions = props => (
   <Box
@@ -9,7 +9,7 @@ const LayoutListRegions = props => (
     mx="auto"
     p={[2]}
     css={{
-      maxWidth: themeConfig.maxWidth,
+      maxWidth: lightTheme.maxWidth,
     }}
   />
 );

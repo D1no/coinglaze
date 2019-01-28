@@ -3,8 +3,8 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { text } from "@storybook/addon-knobs";
 
-import Header from "../components/header";
+import Header from "./header";
 
-storiesOf("Header", module).add("Custom Title", () => (
+storiesOf("Header", module).add("Title Overwrite", () => (
   <Header title={text("Title Overwrite", "This is a test title overwrite!")} />
 ));

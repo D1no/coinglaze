@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "rebass";
 import "styled-components/macro";
-import { lightTheme } from "./theme";
+import { lightTheme } from "../containers/theme";
 
 const LayoutListRegions = props => (
   <Box

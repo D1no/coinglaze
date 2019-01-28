@@ -2,7 +2,7 @@ import React from "react";
 import { configure, addDecorator } from "@storybook/react";
 import { configureViewport } from "@storybook/addon-viewport";
 import { withKnobs } from "@storybook/addon-knobs";
-import { GlobalResetStyle } from "../src/components/theme";
+import { GlobalResetStyle } from "../src/containers/theme";
 
 /**
  * Viewport Preview
@@ -31,10 +31,13 @@ function addGlobalResetStyle(storyFn) {
 addDecorator(addGlobalResetStyle);
 
 /**
- * Path to Stories
+ * Webpack config: Stories are dynamically required from src folder when
+ * the file is called story/stories or appended to name as story / stories
  */
+const req = require.context('../src', true, /(\.|^)stor(y|ies)\.(js|jsx|ts|tsx)$/);
+
 function loadStories() {
-  require("../src/stories");
+  req.keys().forEach(filename => req(filename));
 }
 
 configure(loadStories, module);

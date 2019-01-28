@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
-import Theme from "./components/theme";
+import Theme from "./containers/theme";
 import LayoutListRegions from "./components/layoutListRegions";
 
 import Header from "./components/header";
-import Provider from "./provider";
-import CoinbaseProductsQuery from "./provider/coinbase/productStats";
+import Provider from "./providers";
+import CoinbaseProductsQuery from "./providers/coinbase/productStats";
 
 class App extends Component {
   render() {

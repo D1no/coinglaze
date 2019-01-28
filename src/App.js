@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
-import Theme from "./containers/theme";
-import Provider from "./providers";
+import Theme from "containers/theme";
+import Provider from "providers";
 
-import Home from "./containers/home";
+import Home from "containers/home";
 
 class App extends Component {
   render() {

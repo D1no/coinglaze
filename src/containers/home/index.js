@@ -4,8 +4,8 @@
 import React from "react";
 import { Box } from "rebass";
 
-import Header from "../../components/header";
-import CoinbaseProductsQuery from "../../providers/coinbase/productStats";
+import Header from "components/header";
+import CoinbaseProductsQuery from "providers/coinbase/productStats";
 
 import styled from "styled-components/macro";
 

@@ -1,29 +1,25 @@
 /**
  * Main page of the app
  */
-import React, { Component } from "react";
+import React from "react";
 import { Box } from "rebass";
 
 import Header from "../../components/header";
 import CoinbaseProductsQuery from "../../providers/coinbase/productStats";
 
-import "styled-components/macro";
-import { lightTheme } from "../theme";
+import styled from "styled-components/macro";
+
+const ContentWrapper = styled(Box)`
+  max-width: ${props => props.theme.maxWidth};
+`;
 
 const Home = props => (
-  <Box
-    {...props}
-    mx="auto"
-    p={[2]}
-    css={{
-      maxWidth: lightTheme.maxWidth,
-    }}
-  >
+  <ContentWrapper mx="auto" p={[2]}>
     <div>
       <Header />
     </div>
     <CoinbaseProductsQuery />
-  </Box>
+  </ContentWrapper>
 );
 
 export default Home;

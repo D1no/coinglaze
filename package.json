@@ -44,6 +44,11 @@
       "chai-friendly/no-unused-expressions": 2
     }
   },
+  "babelMacros": {
+    "styledComponents": {
+      "ssr": true
+    }
+  },
   "prettier": {
     "singleQuote": false,
     "jsxBracketSameLine": false,
@@ -74,8 +79,8 @@
     "@storybook/addons": "4.1.11",
     "@storybook/react": "4.1.11",
     "babel-loader": "8.0.4",
+    "babel-plugin-macros": "2.4.5",
     "cypress": "3.1.5",
-    "cypress-react-unit-test": "1.2.1",
     "eslint-config-prettier": "4.0.0",
     "eslint-plugin-chai-friendly": "0.4.1",
     "eslint-plugin-cypress": "2.2.0",

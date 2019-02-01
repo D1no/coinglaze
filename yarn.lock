@@ -2750,7 +2750,7 @@ babel-plugin-macros@2.4.2:
     cosmiconfig "^5.0.5"
     resolve "^1.8.1"
 
-babel-plugin-macros@^2.4.2:
+babel-plugin-macros@2.4.5, babel-plugin-macros@^2.4.2:
   version "2.4.5"
   resolved "https://registry.yarnpkg.com/babel-plugin-macros/-/babel-plugin-macros-2.4.5.tgz#7000a9b1f72d19ceee19a5804f1d23d6daf38c13"
   integrity sha512-+/9yteNQw3yuZ3krQUfjAeoT/f4EAdn3ELwhFfDj0rTMIaoHfIdrcLePOfIaL0qmFLpIcgPIL2Lzm58h+CGWaw==
@@ -4376,11 +4376,6 @@ cyclist@~0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
   integrity sha1-GzN5LhHpFKL9bW7WRHRkRE5fpkA=
-
-cypress-react-unit-test@1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/cypress-react-unit-test/-/cypress-react-unit-test-1.2.1.tgz#cb5aa6565d8d5fa596fd456169c8f9bc3c030702"
-  integrity sha512-XVLTsCONJhT6KoBrPqvDX9zHmpzMM8+oKJnT15iijRZvJPEx0nEy8Y9wnfjta0K2xGNb8KvfLXiUo1pDAu3+tA==
 
 cypress@3.1.5:
   version "3.1.5"

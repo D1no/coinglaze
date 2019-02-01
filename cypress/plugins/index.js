@@ -25,7 +25,9 @@ const webpackOptions = {
         loader: "babel-loader",
         options: {
           presets: ["@babel/preset-react"],
-          plugins: ["@babel/plugin-proposal-class-properties"],
+          // Macros for styled components
+          // See: https://www.styled-components.com/docs/tooling#babel-macro
+          plugins: ["@babel/plugin-proposal-class-properties", "macros"],
         },
       },
     ],

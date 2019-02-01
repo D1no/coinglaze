@@ -1,7 +1,7 @@
 // =============================================================================
 // Mounting React Components that use Styled Component
-// ToDo: Needs rewrite — memory leak in styled components and no proper
-// unmounting of styles
+// TODO: Needs rewrite — memory leak in styled components and no proper
+// unmounting of styles. Meaning, multiple mounts aren't possible in one suite.
 //
 // Note: This is adapted from Gleb Bahmutov <gleb.bahmutov@gmail.com>
 // License: ISC

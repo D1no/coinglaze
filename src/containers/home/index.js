@@ -4,6 +4,7 @@
 import React from "react";
 import { Box } from "rebass";
 
+import Layout from "components/layout";
 import Header from "components/header";
 import CoinbaseProductsQuery from "providers/coinbase/productStats";
 
@@ -14,11 +15,10 @@ const ContentWrapper = styled(Box)`
 `;
 
 const Home = props => (
-  <ContentWrapper mx="auto" p={[2]}>
-    <div>
-      <Header />
-    </div>
-    <CoinbaseProductsQuery />
+  <ContentWrapper mx="auto" p={[0]}>
+    <Layout sectionHeader={<Header />}>
+      <CoinbaseProductsQuery />
+    </Layout>
   </ContentWrapper>
 );
 

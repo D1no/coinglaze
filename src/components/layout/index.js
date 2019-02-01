@@ -56,18 +56,22 @@ const Layout = ({
       <Section
         data-test="sectionTopControl"
         {...sectionProps}
-        width={[1, 0]}
+        width={[1, 1, 0]}
         display={[true, false]}
       >
         {sectionTopControl}
       </Section>
-      <Section data-test="sectionContent" {...sectionProps} width={[1, 1 / 2]}>
+      <Section
+        data-test="sectionContent"
+        {...sectionProps}
+        width={[1, 2 / 3, 1 / 2]}
+      >
         {props.children}
       </Section>
       <Section
         data-test="sectionSidebarControl"
         {...sectionProps}
-        width={[0, 1 / 2]}
+        width={[0, 1 / 3, 1 / 2]}
         display={[false, true]}
       >
         {sectionSidebarControl}

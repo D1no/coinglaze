@@ -15,8 +15,8 @@
  - [X] Illustrate Testing Strategies
      - [X] Assumption: T/BDD
      - [ ] Acceptance tests as E2E
-     - [ ] Basic unit/component tests
-  - [ ] Should be responsive (mobile / web)
+     - [x] Basic unit/component tests
+  - [x] Should be responsive (mobile / web)
 
 ### _User Storys_
  - [ ] **Epic**: As a user, I want to be able to open coinglaze in a web browser.

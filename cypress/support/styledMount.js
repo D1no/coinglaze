@@ -1,5 +1,7 @@
 // =============================================================================
 // Mounting React Components that use Styled Component
+// ToDo: Needs rewrite — memory leak in styled components and no proper
+// unmounting of styles
 //
 // Note: This is adapted from Gleb Bahmutov <gleb.bahmutov@gmail.com>
 // License: ISC
@@ -62,7 +64,8 @@ Cypress.Commands.add("mount", jsx => {
   // otherwise the component will NOT be able to dispatch any events
   // when it runs the second time
   // https://github.com/bahmutov/cypress-react-unit-test/issues/3
-  const html = `<body>
+  const html = `
+  <body>
     <div id="app"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.7.0/umd/react.development.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.7.0/umd/react-dom.development.js"></script>

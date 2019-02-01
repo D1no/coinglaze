@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Flex } from "rebass";
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 import { style } from "styled-system";
 
 /**

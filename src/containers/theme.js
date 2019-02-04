@@ -13,9 +13,7 @@ const GlobalResetStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-      sans-serif;
+    font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -35,10 +33,6 @@ const GlobalPageStyle = createGlobalStyle`
  */
 const lightTheme = {
   maxWidth: "1024px",
-  fonts: {
-    sans: "system-ui, sans-serif",
-    mono: "Menlo, monospace",
-  },
 };
 
 /**

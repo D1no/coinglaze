@@ -16,7 +16,7 @@ const ContentWrapper = styled(Box)`
 
 const Home = props => (
   <ContentWrapper mx="auto" p={[0]}>
-    <Layout sectionHeader={<Header />}>
+    <Layout debug={false} sectionHeader={<Header />}>
       <CoinbaseProductsQuery />
     </Layout>
   </ContentWrapper>

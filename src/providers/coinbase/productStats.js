@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
+import CardItem from "components/cardItem";
+
 /**
  * Standard (slow) query, mitigated by provider against rate limiting
  * (Queueing requests on fetch layer)
@@ -65,19 +67,18 @@ class CoinbaseProducts extends Component {
       <div>
         <h4>Product Pairs</h4>
         {products.map(
-          ({
-            id,
-            base_currency,
-            quote_currency,
-            display_name,
-            margin_enabled,
-            stats,
-          }) => (
-            <div key={id}>
-              (id: {id}) {display_name}, {base_currency}, {quote_currency},{" "}
-              {margin_enabled ? "Yes!" : "No!"}, last: {stats.last}, open:{" "}
-              {stats.open}, high: {stats.high}, low: {stats.low}
-            </div>
+          ({ id, base_currency, quote_currency, display_name, stats }) => (
+            <CardItem
+              displayName={display_name}
+              baseCurrency={base_currency}
+              last={stats.last}
+              highLow={stats.high - stats.low}
+              volume={stats.volume}
+              volume30Day={stats.volume30Day}
+              high={stats.high}
+              low={stats.low}
+              key={id}
+            />
           )
         )}
       </div>

@@ -22,6 +22,7 @@ const GlobalResetStyle = createGlobalStyle`
 // Place for Page Styling
 const GlobalPageStyle = createGlobalStyle`
   body {
+    color: #0D121A;
     background-size: cover;
     background: linear-gradient(-180deg, #FFFFFF 0%, #F7F6F8 67%, #EAE4F7 100%) no-repeat center center fixed;
   }
@@ -30,9 +31,28 @@ const GlobalPageStyle = createGlobalStyle`
 /**
  * Configuration for Design System Choices
  * Note: Overwrites styled-system defaults incl. responsive properties
+ * Link: https://github.com/jxnblk/styled-system/blob/master/docs/table.md
  */
 const lightTheme = {
   maxWidth: "1024px",
+  breakpoints: ["40em", "52em", "64em"],
+  fontSizes: [6, 8, 10, 12, 16, 20, 24, 32, 48, 64],
+  colors: {
+    white: "#fff",
+    light: "#C2C3C6",
+    red: "#F54949",
+  },
+  space: [0, 2, 3, 5, 10, 15, 20, 25, 30, 40, 60, 120, 250],
+  fontWeights: {
+    light: 300,
+    medium: 500,
+    bold: 800,
+  },
+  shadows: {
+    card: "0 0 8px 0 rgba(13,18,26,0.19)",
+    small: "0 0 4px 0 rgba(13,18,26,0.19)",
+    large: "0 0 24px 0 rgba(13,18,26,0.19)",
+  },
 };
 
 /**

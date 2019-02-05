@@ -2,7 +2,7 @@ import React from "react";
 import { configure, addDecorator } from "@storybook/react";
 import { configureViewport } from "@storybook/addon-viewport";
 import { withKnobs } from "@storybook/addon-knobs";
-import { GlobalResetStyle } from "../src/containers/theme";
+import Theme from "../src/containers/theme";
 
 /**
  * Viewport Preview
@@ -19,12 +19,11 @@ addDecorator(withKnobs);
 /**
  * Global Style Reset for all Styled Components
  */
-function addGlobalResetStyle(storyFn) {
+function addGlobalResetStyle(storyFN) {
   return (
-    <>
-      <GlobalResetStyle />
-      {storyFn()}
-    </>
+    <Theme>
+      {storyFN()}
+    </Theme>
   );
 }
 

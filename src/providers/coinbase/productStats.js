@@ -71,10 +71,11 @@ class CoinbaseProducts extends Component {
             <CardItem
               displayName={display_name}
               baseCurrency={base_currency}
+              quoteCurrency={quote_currency}
               last={stats.last}
               highLow={stats.high - stats.low}
               volume={stats.volume}
-              volume30Day={stats.volume30Day}
+              volume30Day={stats.volume_30day}
               high={stats.high}
               low={stats.low}
               key={id}

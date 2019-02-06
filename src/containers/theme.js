@@ -39,10 +39,11 @@ const lightTheme = {
   fontSizes: [6, 8, 10, 12, 16, 20, 24, 32, 48, 64],
   colors: {
     white: "#fff",
+    gray: "#F6F4F7",
     light: "#C2C3C6",
     red: "#F54949",
   },
-  space: [0, 2, 3, 5, 10, 15, 20, 25, 30, 40, 60, 120, 250],
+  space: [0, 2, 3, 5, 10, 15, 20, 25, 30, 45, 70, 95, 120, 250],
   fontWeights: {
     light: 300,
     medium: 500,

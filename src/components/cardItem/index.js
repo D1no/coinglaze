@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Card, Heading, Text, Flex } from "rebass";
+import { themeGet } from "styled-system";
 import styled, { css } from "styled-components/macro";
 
 const Area = styled(Box)`
@@ -9,6 +10,24 @@ const Area = styled(Box)`
     css`
       background-color: ${props.dbg ? props.dbg : "none"};
     `}
+`;
+
+// Underline
+const LeadingArea = styled(Area)`
+  border-bottom: 1px solid ${themeGet("colors.gray")};
+`;
+
+const Badge = styled(Flex)`
+  background-color: orange;
+  position: relative;
+  z-index: 100;
+
+  margin-bottom: -35px;
+  border-radius: 100%;
+
+  border: 4px solid white;
+  height: 70px;
+  width: 70px;
 `;
 
 const CardItem = ({
@@ -24,6 +43,7 @@ const CardItem = ({
   low = 1234.12,
   ...props
 }) => {
+  // Design Reference width of the card, used for relative sizing
   const relativeWidth = 345;
 
   // TODO: This needs to go upstream into the provider and use .requestIdleCallback() to filter proper currency codes
@@ -87,44 +107,52 @@ const CardItem = ({
 
   return (
     <Box width={1} py={4} px={6}>
-      <Area
+      <Badge
         mx={4}
         p={0}
-        width={75 / relativeWidth}
-        bg="orange"
-        debug={debug}
-        dbg="orange"
+        alignItems="center"
+        justifyContent="center"
+        fontSize={6}
       >
-        <Heading as="h2" textAlign="center" color="white">
+        <Text fontWeight="bold" color="white">
           {baseCurrency}
-        </Heading>
-      </Area>
+        </Text>
+      </Badge>
       <Card px={4} pb={3} borderRadius={12} boxShadow="card" bg="white">
         <Flex flexWrap="wrap">
-          <Area p={0} width={80 / relativeWidth} debug={debug} dbg="orange" />
-          <Area p={0} width={70 / relativeWidth} debug={debug} dbg="yellow">
+          <Area p={0} width={80 / relativeWidth} debug={debug} dbg="olive" />
+          <LeadingArea
+            pl={4}
+            pr={3}
+            width={75 / relativeWidth}
+            debug={debug}
+            dbg="yellow"
+          >
             <Text
               fontSize={3}
-              textAlign="center"
+              textAlign="left"
               color="light"
               fontWeight="bold"
               lineHeight={2.5}
             >
               {displayName}
             </Text>
-          </Area>
-          <Area p={0} width={5 / relativeWidth} debug={debug} dbg="green" />
-          <Area p={0} width={190 / relativeWidth} debug={debug} dbg="lightblue">
+          </LeadingArea>
+          <LeadingArea
+            p={0}
+            width={190 / relativeWidth}
+            debug={debug}
+            dbg="lightblue"
+          >
             <Text fontSize={3} textAlign="right" color="red" lineHeight={2.5}>
               {displayCurrency(highLow)}
             </Text>
-          </Area>
-          <Area p={3} width={150 / relativeWidth} debug={debug} dbg="yellow">
+          </LeadingArea>
+          <Area p={3} width={155 / relativeWidth} debug={debug} dbg="yellow">
             <Heading as="h3" m="none" textAlign="center">
               {displayCurrency(last)}
             </Heading>
           </Area>
-          <Area p={0} width={5 / relativeWidth} debug={debug} dbg="green" />
           {Stats}
         </Flex>
       </Card>

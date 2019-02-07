@@ -33,17 +33,48 @@ const GlobalPageStyle = createGlobalStyle`
  * Note: Overwrites styled-system defaults incl. responsive properties
  * Link: https://github.com/jxnblk/styled-system/blob/master/docs/table.md
  */
+// prettier-ignore
 const lightTheme = {
   maxWidth: "1024px",
-  breakpoints: ["40em", "52em", "64em"],
-  fontSizes: [6, 8, 10, 12, 16, 20, 24, 32, 48, 64],
+  breakpoints: [
+    "40em", // 00
+    "52em", // 01
+    "64em", // 02
+  ],
+  fontSizes: [
+    6,   // 00
+    8,   // 01
+    10,  // 02
+    12,  // 03
+    16,  // 04
+    20,  // 05
+    24,  // 06
+    32,  // 07
+    48,  // 08
+    64,  // 09
+  ],
   colors: {
     white: "#fff",
     gray: "#F6F4F7",
     light: "#C2C3C6",
     red: "#F54949",
   },
-  space: [0, 2, 3, 5, 10, 15, 20, 25, 30, 45, 70, 95, 120, 250],
+  space: [
+    0,   // 00
+    2,   // 01
+    3,   // 02
+    5,   // 03
+    10,  // 04
+    15,  // 05
+    20,  // 06
+    25,  // 07
+    30,  // 08
+    45,  // 09
+    70,  // 10
+    95,  // 11
+    120, // 12
+    250. // 13
+  ],
   fontWeights: {
     light: 300,
     medium: 500,

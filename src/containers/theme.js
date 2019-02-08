@@ -1,32 +1,10 @@
 import React from "react";
+import { themeGet } from "styled-system";
 /**
  * Macro needed to support the css property without ejecting CRA.
  * Note: Link & Details https://www.styled-components.com/docs/tooling#babel-macro
  */
 import { ThemeProvider, createGlobalStyle } from "styled-components/macro";
-
-/**
- * Global App Styles
- * Note: Place for index.css content / replacement
- */
-const GlobalResetStyle = createGlobalStyle`
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-`;
-
-// Place for Page Styling
-const GlobalPageStyle = createGlobalStyle`
-  body {
-    color: #0D121A;
-    background-size: cover;
-    background: linear-gradient(-180deg, #FFFFFF 0%, #F7F6F8 67%, #EAE4F7 100%) no-repeat center center fixed;
-  }
-`;
 
 /**
  * Configuration for Design System Choices
@@ -54,6 +32,7 @@ const lightTheme = {
     64,  // 09
   ],
   colors: {
+    black: "#0D121A",
     white: "#fff",
     gray: "#F6F4F7",
     light: "#C2C3C6",
@@ -76,9 +55,18 @@ const lightTheme = {
     250. // 13
   ],
   fontWeights: {
+    get main() { return this.regular },
+    // Variations
+    thin: 100,
     light: 300,
+    regular: 400,
     medium: 500,
-    bold: 800,
+    bold: 700,
+    black: 900,
+  },
+  fonts: {
+    prominent: '"Jua","Roboto","Helvetica Neue",sans-serif',
+    main: '"Roboto","Helvetica Neue",sans-serif',
   },
   shadows: {
     card: "0 0 8px 0 rgba(13,18,26,0.19)",
@@ -88,14 +76,42 @@ const lightTheme = {
 };
 
 /**
+ * Global Reset
+ */
+const GlobalResetStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+`;
+
+/**
+ * Page Styles
+ * Note: Place for index.css content / replacement
+ */
+const GlobalPageStyle = createGlobalStyle`
+  body {
+    font-family: ${themeGet("fonts.main")};
+    font-weight: ${themeGet("fontWeights.main")};
+    color: ${themeGet("colors.black")};
+    background-size: cover;
+    background: linear-gradient(-180deg, #FFFFFF 0%, #F7F6F8 67%, #EAE4F7 100%) no-repeat center center fixed;
+  }
+`;
+
+/**
  * Theme Container for <App />
  */
 export default props => (
-  <>
-    <GlobalResetStyle />
-    <GlobalPageStyle />
-    <ThemeProvider theme={lightTheme} {...props} />
-  </>
+  <ThemeProvider theme={lightTheme}>
+    <>
+      <GlobalResetStyle />
+      <GlobalPageStyle />
+      {props.children}
+    </>
+  </ThemeProvider>
 );
 
 export { lightTheme, GlobalResetStyle, GlobalPageStyle };

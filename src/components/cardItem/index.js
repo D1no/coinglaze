@@ -114,7 +114,7 @@ const CardItem = ({
         justifyContent="center"
         fontSize={6}
       >
-        <Text fontWeight="bold" color="white">
+        <Text color="white" fontFamily="prominent">
           {baseCurrency}
         </Text>
       </Badge>

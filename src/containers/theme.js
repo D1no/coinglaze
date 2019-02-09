@@ -32,10 +32,13 @@ const lightTheme = {
     64,  // 09
   ],
   colors: {
+    // Main
     black: "#0D121A",
-    white: "#fff",
-    gray: "#F6F4F7",
     light: "#C2C3C6",
+    white: "#fff",
+    // Variations
+    gray: "#F6F4F7",
+    darkgray: "#86878C",
     red: "#F54949",
   },
   space: [
@@ -54,6 +57,9 @@ const lightTheme = {
     120, // 12
     250. // 13
   ],
+  heights: {
+    dropbox: 40
+  },
   fontWeights: {
     get main() { return this.regular },
     // Variations

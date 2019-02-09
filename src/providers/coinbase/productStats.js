@@ -65,7 +65,6 @@ class CoinbaseProducts extends Component {
 
     return (
       <div>
-        <h4>Product Pairs</h4>
         {products.map(
           ({ id, base_currency, quote_currency, display_name, stats }) => (
             <CardItem

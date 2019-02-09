@@ -25,7 +25,7 @@ const Badge = styled(Flex)`
   margin-bottom: -35px;
   border-radius: 100%;
 
-  border: 4px solid white;
+  border: 4px solid ${themeGet("colors.white")};
   height: 70px;
   width: 70px;
 `;

@@ -1,4 +1,25 @@
-# Coinglaze - Code Challange
+## What is this?
+
+> This is a study for deriving a new type of code challenge from a normalised workflow for "tasking a sample react app with modern tools", that actually covers the E2E / full stack process for fetching, displaying, testing and composing a product. This helps to better estimate sprint loads and/or interview full stack engineers in a qualitative way.
+
+> ![coinglaze_timelapse_01_small](https://user-images.githubusercontent.com/2397125/52868246-11a35f00-3143-11e9-9dfe-d4816f587cc4.gif)
+ 
+> Time-Lapse of my creation process is recorded from first commit to completion for dissection; annotated according to gitmoji. I will upload the video at some time. 
+
+### Stack Challange
+- React 16.7 (incl. Hooks & Suspense)
+- Apollo / GraphQL (using apollo-link-rest)
+- Endpoint with a n+1 aggregation challange (in this case, coinbase.com)
+- Sketch App (mocking and interfacing with design; creation of a design system)
+- Styled-Components for implementing a responsive design system
+
+### Testing / Quality Assurance
+- Cypress with Mocha & Chai (E2E incl. Unit-Testing)
+- Storybook (component composition strategy & design system validation)
+
+-------
+
+## Coinglaze - Code Challange
 
 ### How to run
  - `yarn install`

@@ -1,13 +1,14 @@
 /**
  * Main page of the app
  */
-import React from "react";
+import React, { Suspense } from "react";
 import { Box } from "rebass";
 
 import Layout from "components/layout";
 import Header from "components/header";
 import HeadSelect from "components/headSelect";
-import CoinbaseProductsQuery from "providers/coinbase/productStats";
+import ProductStats from "providers/coinbase/productStats";
+import CardItem from "components/cardItem";
 
 import styled from "styled-components/macro";
 
@@ -22,7 +23,31 @@ const Home = props => (
       sectionHeader={<Header />}
       sectionTopControl={<HeadSelect />}
     >
-      <CoinbaseProductsQuery />
+      <Suspense fallback={<h4>Loading...</h4>}>
+        <ProductStats
+          onError={error => <h4>{error.message}</h4>}
+          onNoResult={data => <h4>No Result!</h4>}
+        >
+          {({ products }) =>
+            products.map(
+              ({ id, base_currency, quote_currency, display_name, stats }) => (
+                <CardItem
+                  displayName={display_name}
+                  baseCurrency={base_currency}
+                  quoteCurrency={quote_currency}
+                  last={stats.last}
+                  highLow={stats.high - stats.low}
+                  volume={stats.volume}
+                  volume30Day={stats.volume_30day}
+                  high={stats.high}
+                  low={stats.low}
+                  key={id}
+                />
+              )
+            )
+          }
+        </ProductStats>
+      </Suspense>
     </Layout>
   </ContentWrapper>
 );

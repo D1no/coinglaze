@@ -1,14 +1,12 @@
-import React, { Component } from "react";
-import { graphql } from "react-apollo";
+import React from "react";
 import gql from "graphql-tag";
-
-import CardItem from "components/cardItem";
+import { useQuery } from "react-apollo-hooks";
 
 /**
  * Standard (slow) query, mitigated by provider against rate limiting
  * (Queueing requests on fetch layer)
  */
-const Products = gql`
+const GET_PRODUCTS = gql`
   query products {
     products @rest(type: "[Product]", path: "/products", endpoint: "coinbase") {
       id @export(as: "id")
@@ -44,67 +42,26 @@ const Products = gql`
 `;
 
 /**
- * Mocking Component
- * ToDo: Factor out
+ * Render Prop Component for an array of stats, using react hooks
+ * and an upstream suspense component within the container.
+ * TODO: Should incorporate query logic.
  */
+function ProductStats({
+  onError = error => <>{error.message}</>,
+  onNoResult = data => <>No Result!</>,
+  children,
+}) {
+  const { data, error } = useQuery(GET_PRODUCTS, { suspend: true });
 
-class CoinbaseProducts extends Component {
-  // ToDo: Refactor out component
-  render() {
-    const { loading, error, products } = this.props;
-
-    if (loading) {
-      return <h4>Loading...</h4>;
-    }
-    if (error) {
-      return <h4>{error.message}</h4>;
-    }
-    if (!products) {
-      return <h4>No Result!</h4>;
-    }
-
-    return (
-      <div>
-        {products.map(
-          ({ id, base_currency, quote_currency, display_name, stats }) => (
-            <CardItem
-              displayName={display_name}
-              baseCurrency={base_currency}
-              quoteCurrency={quote_currency}
-              last={stats.last}
-              highLow={stats.high - stats.low}
-              volume={stats.volume}
-              volume30Day={stats.volume_30day}
-              high={stats.high}
-              low={stats.low}
-              key={id}
-            />
-          )
-        )}
-      </div>
-    );
+  if (error) {
+    return onError(error);
   }
+
+  if (!data.products) {
+    return onNoResult(data);
+  }
+
+  return children(data);
 }
 
-const CoinbaseProductsQuery = graphql(Products, {
-  props: ({ data }) => {
-    if (data.loading) {
-      return {
-        loading: data.loading,
-      };
-    }
-
-    if (data.error) {
-      return {
-        error: data.error,
-      };
-    }
-
-    return {
-      products: data.products,
-      loading: false,
-    };
-  },
-})(CoinbaseProducts);
-
-export default CoinbaseProductsQuery;
+export default ProductStats;

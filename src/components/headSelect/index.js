@@ -1,7 +1,7 @@
 import React from "react";
 import { themeGet } from "styled-system";
 import styled from "styled-components/macro";
-import { Heading, Flex, Box, Text } from "rebass";
+import { Flex, Box } from "rebass";
 
 const Dropdown = styled(Box)`
   background: none;
@@ -44,14 +44,18 @@ const Dropdown = styled(Box)`
   }
 `;
 
-const HeadSelect = ({}) => {
+const HeadSelect = props => {
   return (
     <Flex pt={4} pb={6} px={9} width={1} bg="">
       <Dropdown as="label" touchHeight={40} width={1}>
-        <Box as="select" width={1} fontSize={4} color="darkgray">
-          <option value="" disabled selected>
-            Base Currency set to EUR
-          </option>
+        <Box
+          as="select"
+          defaultValue="Base Currency set to EUR"
+          width={1}
+          fontSize={4}
+          color="darkgray"
+        >
+          <option disabled>Base Currency set to EUR</option>
           <option value="EUR">EUR</option>
           <option value="USD">USD</option>
           <option value="BTC">BTC</option>

@@ -10251,6 +10251,13 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-apollo-hooks@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-apollo-hooks/-/react-apollo-hooks-0.4.0.tgz#8b7992cf78f19390c530bc8f6a201cb4763c35b4"
+  integrity sha512-dQ7mWptHSQ7rk4YfcAuDN+ct/kP3Qg91r3vR+EX4YHHnIH8eDRAD097K0xE6bOIbeTtcGzBjBU5csRVrTHnnJw==
+  dependencies:
+    lodash "^4.17.11"
+
 react-apollo@2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.4.1.tgz#89db63ebacf01c1603553bb476f089492aaeab2c"

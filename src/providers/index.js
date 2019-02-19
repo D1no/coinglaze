@@ -9,6 +9,7 @@ import { ApolloLink } from "apollo-link";
 import { RestLink } from "apollo-link-rest";
 import { RetryLink } from "apollo-link-retry";
 import { ApolloProvider } from "react-apollo";
+import { ApolloProvider as ApolloProviderHooks } from "react-apollo-hooks";
 import pThrottle from "p-throttle";
 import coinbaseConfig from "./coinbase/coinbaseConfig";
 
@@ -64,7 +65,9 @@ const Client = new ApolloClient({
 export { Client };
 
 const Provider = props => (
-  <ApolloProvider client={Client}>{props.children}</ApolloProvider>
+  <ApolloProvider client={Client}>
+    <ApolloProviderHooks client={Client}>{props.children}</ApolloProviderHooks>
+  </ApolloProvider>
 );
 
 export default Provider;
